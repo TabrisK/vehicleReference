@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>vehicle ref</title>
+    </head>
+    <body>
+        <div id="app">
+            <aside>
+                <router-link to="/all-vehicles">All Vehicle</router-link>
+                <router-link :to="{ name: 'detail', params: { id: 123 }}">detail</router-link>
+            </aside>
+            <transition name="alide">
+                <router-view></router-view>
+            </transition>
+        </div>
+        <script src="bundle.js"></script>
+    </body>
+</html>

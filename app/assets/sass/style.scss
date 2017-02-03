@@ -1,0 +1,37 @@
+body {
+  margin: 0px;
+}
+
+ul {
+  padding: 0px;
+  li {
+    list-style: none;
+    padding: 5px 10px;
+    font-family: "Microsoft YaHei UI";
+    a {
+      text-decoration: none;
+      color: #000;
+      border-bottom: 1px solid gray;
+      display: block;
+      padding: 4px 0px;
+      .contact {
+        float: right;
+      }
+    }
+  }
+  li:last-child {
+    a {
+      border-bottom: none;
+    }
+  }
+  border-bottom: 1px solid gray;
+}
+
+.mapBg {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  & > div {
+    height: 100%;
+  }
+}
