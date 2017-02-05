@@ -7,9 +7,9 @@
     </head>
     <body>
         <div id="app">
-            <aside>
-                <router-link to="/all-vehicles">All Vehicle</router-link>
+            <aside class="tool-bar">
             </aside>
+            <button @click="back" v-show="$route.name != 'all'">Back</button>
             <transition name="alide">
                 <router-view></router-view>
             </transition>

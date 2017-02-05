@@ -19,10 +19,31 @@ Vue.component(
     () => System.import('./components/baidu-map.component.vue')
 );
 
+vRouter.beforeEach((to, from, next) => {
+    next();
+});
+
+vRouter.afterEach((to, from) => {
+});
+
 var app = new Vue({
     el: "#app",
-    data: {
-        message: "Hello Vue!!!"
+    beforeCreate(){
     },
+    data: {
+        message: "Hello Vue!!!",
+        back: function () {
+            vRouter.go(-1);
+        },
+        forward: function () {
+            vRouter.go(1);
+        }
+    },
+    methods: {
+        isOriginal: function () {
+            return vRouter.currentRoute.name != "all";
+        }
+    },
+    computed: {},
     router: vRouter
 });

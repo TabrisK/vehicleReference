@@ -1,3 +1,5 @@
+@import "./map";
+
 body {
   margin: 0px;
 }
@@ -27,11 +29,12 @@ ul {
   border-bottom: 1px solid gray;
 }
 
-.mapBg {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  & > div {
-    height: 100%;
+.tool-bar {
+  text-align: right;
+}
+
+form {
+  input {
+    margin: 10px 2px 0px 2px;
   }
 }
