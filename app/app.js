@@ -11,6 +11,7 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import vRouter from './router';
 import topNav from './components/footer-nav.component.vue';
+import headerBar from './components/header-bar.component.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -37,22 +38,14 @@ var app = new Vue({
         }
     },
     data: {
-        transitionName: 'slide-left',
-        back: function () {
-            vRouter.go(-1);
-        },
-        forward: function () {
-            vRouter.go(1);
-        }
+        transitionName: 'slide-left'
     },
     methods: {
-        isOriginal: function () {
-            return vRouter.currentRoute.name != "all";
-        }
     },
     computed: {},
     router: vRouter,
     components: {
-        "footer-nav": topNav
+        "footer-nav": topNav,
+        "header-bar": headerBar
     }
 });

@@ -7,9 +7,9 @@
     </head>
     <body>
         <div id="app">
-            <aside class="tool-bar">
-            </aside>
-            <button @click="back" v-show="$route.name != 'all'">Back</button>
+            <header>
+                <header-bar></header-bar>
+            </header>
             <transition name="fade">
                 <router-view></router-view>
             </transition>
