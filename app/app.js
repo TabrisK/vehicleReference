@@ -10,6 +10,7 @@ import _ from 'lodash';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import vRouter from './router';
+import topNav from './components/footer-nav.component.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -28,10 +29,15 @@ vRouter.afterEach((to, from) => {
 
 var app = new Vue({
     el: "#app",
-    beforeCreate(){
+    watch: {
+        '$route' (to, from) {
+            const toDepth = to.path.split('/').length;
+            const fromDepth = from.path.split('/').length;
+            this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+        }
     },
     data: {
-        message: "Hello Vue!!!",
+        transitionName: 'slide-left',
         back: function () {
             vRouter.go(-1);
         },
@@ -45,5 +51,8 @@ var app = new Vue({
         }
     },
     computed: {},
-    router: vRouter
+    router: vRouter,
+    components: {
+        "footer-nav": topNav
+    }
 });

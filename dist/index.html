@@ -10,9 +10,12 @@
             <aside class="tool-bar">
             </aside>
             <button @click="back" v-show="$route.name != 'all'">Back</button>
-            <transition name="alide">
+            <transition name="fade">
                 <router-view></router-view>
             </transition>
+            <footer>
+                <footer-nav></footer-nav>
+            </footer>
         </div>
         <script src="https://api.map.baidu.com/api?v=2.0&ak=nLcg543nSxxibj5V0dwU02Dl&s=1"></script>
         <script src="bundle.js"></script>

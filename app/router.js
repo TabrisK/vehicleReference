@@ -10,10 +10,10 @@ const Add = ()=> System.import('./components/vehicle-add.component.vue');
 
 const routes = [
     //{ path: '*', component: NotFoundComponent },//没有匹配到页面  前端404
-    {name: "all", path: "", component: Default},
-    {name: "all", path: "/all-vehicles", component: Default},
+    {path: "", redirect: "/vehicle"},
+    {name: "all", path: "/vehicle", component: Default},
     {name: "add", path: "/add-vehicle", component: Add},
-    {name: "detail", path: "/detail/:id", component: Detail}
+    {name: "detail", path: "/vehicle/:id", component: Detail}
 ];
 
 const vRouter = new VueRouter({

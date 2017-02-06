@@ -5,15 +5,14 @@
 
 module.exports = {
     entry: "./app/app.js",
-    devtool: "cheap-eval-source-map",
+    devtool: "eval-source-map",
     output: {
         filename: "bundle.js",
         path: "./dist"
 
     },
 
-    plugins: [
-    ],
+    plugins: [],
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js'
@@ -24,14 +23,20 @@ module.exports = {
         rules: [
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
             {test: /\.vue$/, loader: 'vue-loader'},
-            {test: /\.scss$/, use: [
+            {
+                test: /\.scss$/, use: [
                 {
                     loader: 'sass-loader',
                     options: {
                         sourceMap: true
                     }
                 }
-            ]}
+            ]
+            },
+            {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??/,
+                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+            }
         ]
     }
 };

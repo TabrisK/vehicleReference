@@ -1,7 +1,12 @@
+@import "../font-awesome/scss/font-awesome";
 @import "./map";
 
-body {
-  margin: 0px;
+$basic-border-color: #c1c1c1;
+$drak-border-color: #484848;
+
+html, body {
+  margin: 0;
+  height: 100%;
 }
 
 ul {
@@ -13,7 +18,7 @@ ul {
     a {
       text-decoration: none;
       color: #000;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid $basic-border-color;
       display: block;
       padding: 4px 0px;
       .contact {
@@ -26,7 +31,7 @@ ul {
       border-bottom: none;
     }
   }
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid $drak-border-color;
 }
 
 .tool-bar {
@@ -36,5 +41,40 @@ ul {
 form {
   input {
     margin: 10px 2px 0px 2px;
+  }
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+
+  .footer-nav {
+    height: 50px;
+    border-top: 1px solid $drak-border-color;
+    background-color: white;
+    font-size: 0px;
+
+    a {
+      display: inline-block;
+      height: 100%;
+      width: 50%;
+      font-size: 14px;
+      color: #444444;
+      i {
+
+        text-align: center;
+        margin: 5px auto 0px auto;
+        width: 100%;
+        display: block;
+      }
+      p {
+        text-align: center;
+        font-size: 12px;
+        width: 100%;
+        margin: 0px auto;
+        display: block;
+      }
+    }
   }
 }
