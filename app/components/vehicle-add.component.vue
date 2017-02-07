@@ -1,16 +1,17 @@
 <template>
     <div>
-        <form>
+        <form @submit.prevent="addVehicle(vehicle)">
             <div><input v-model="vehicle.plate" placeholder="车牌" maxlength="7"></div>
             <div><input v-model="vehicle.brand" placeholder="品牌"></div>
             <div><input v-model="vehicle.contact" placeholder="联系人"></div>
             <div><input v-model="vehicle.phone" placeholder="联系方式"></div>
-            <button type="submit" @click="addVehicle(vehicle)">提交</button>
+            <button type="submit">提交</button>
         </form>
     </div>
 </template>
 
 <script>
+    "use strict"
     export default {
         data (){
             return {

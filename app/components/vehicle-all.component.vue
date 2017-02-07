@@ -1,8 +1,7 @@
 <template>
-    <div>
-        <router-link to="/add-vehicle" tag="button">add</router-link>
-        <ul>
-            <li class="listli" v-for="vehicle in vehicleList">
+    <div class="content">
+        <ul class="primary-list">
+            <li v-for="vehicle in vehicleList">
                 <router-link :to="{ name: 'detail', params: { id: vehicle.id }}"><b>{{vehicle.plate}}</b><span class="contact">{{vehicle.contact}}</span></router-link>
             </li>
         </ul>

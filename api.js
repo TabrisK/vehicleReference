@@ -25,17 +25,17 @@ function api(app) {
 let vehicleInfo = [
     {
         "id": 0,
-        "plate": "沪A7xxxx",
-        "brand": "VOLVO",
-        "contact": "HELEX",
-        "phone": "13262607231"
-    },
-    {
-        "id": 1,
         "plate": "沪A2xxxx",
         "brand": "Benz",
         "contact": "Sherry",
         "phone": "1xxxxxxxxxx"
+    },
+    {
+        "id": 1,
+        "plate": "沪A7xxxx",
+        "brand": "VOLVO",
+        "contact": "HELEX",
+        "phone": "13262607231"
     },
     {
         "id": 2,
@@ -56,6 +56,20 @@ let vehicleInfo = [
         "plate": "沪ANxxxx",
         "brand": "Lexus",
         "contact": "Rosemond",
+        "phone": "1xxxxxxxxxx"
+    },
+    {
+        "id": 5,
+        "plate": "沪C7Nxxxx",
+        "brand": "Cadillac",
+        "contact": "Obama",
+        "phone": "1xxxxxxxxxx"
+    },
+    {
+        "id": 6,
+        "plate": "浙Nxxxx",
+        "brand": "Chevrolet",
+        "contact": "Trump",
         "phone": "1xxxxxxxxxx"
     }
 ];

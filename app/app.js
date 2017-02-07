@@ -12,6 +12,7 @@ import VueResource from 'vue-resource';
 import vRouter from './router';
 import topNav from './components/footer-nav.component.vue';
 import headerBar from './components/header-bar.component.vue';
+import popUpBox from './components/pop-up-box.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -46,6 +47,7 @@ var app = new Vue({
     router: vRouter,
     components: {
         "footer-nav": topNav,
-        "header-bar": headerBar
+        "header-bar": headerBar,
+        "pop-up-box": popUpBox
     }
 });
