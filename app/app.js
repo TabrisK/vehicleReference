@@ -27,6 +27,7 @@ vRouter.beforeEach((to, from, next) => {
 });
 
 vRouter.afterEach((to, from) => {
+    console.log(to);
 });
 
 var app = new Vue({
@@ -35,7 +36,7 @@ var app = new Vue({
         '$route' (to, from) {
             const toDepth = to.path.split('/').length;
             const fromDepth = from.path.split('/').length;
-            this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-right'
+            this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
     },
     data: {

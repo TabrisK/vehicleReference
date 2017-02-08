@@ -18,6 +18,7 @@ html, body {
   bottom: 50px;
   overflow-y: auto;
   width: 100%;
+  background-color: white;
 }
 
 ul.primary-list {
@@ -149,6 +150,7 @@ footer {
   top: 0px;
   left: 0px;
   transition: opacity 0.4s;
+  z-index: 999;
 
   &.pop-up-open {
     opacity: 1;

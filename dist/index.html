@@ -11,7 +11,7 @@
                 <header-bar @toggle-popup="popup = !popup" :popup="popup"></header-bar>
             </header>
             <transition :name="stateTransition">
-                <router-view></router-view>
+                <router-view class="content"></router-view>
             </transition>
             <footer>
                 <footer-nav></footer-nav>
