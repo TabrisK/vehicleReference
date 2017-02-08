@@ -35,11 +35,12 @@ var app = new Vue({
         '$route' (to, from) {
             const toDepth = to.path.split('/').length;
             const fromDepth = from.path.split('/').length;
-            this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+            this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-right'
         }
     },
     data: {
-        transitionName: 'slide-left'
+        stateTransition: 'slide-left',
+        popup: false//popup-box默认关闭
     },
     methods: {
     },

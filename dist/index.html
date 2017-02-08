@@ -8,15 +8,17 @@
     <body>
         <div id="app">
             <header>
-                <header-bar></header-bar>
+                <header-bar @toggle-popup="popup = !popup" :popup="popup"></header-bar>
             </header>
-            <transition name="fade">
+            <transition :name="stateTransition">
                 <router-view></router-view>
             </transition>
             <footer>
                 <footer-nav></footer-nav>
             </footer>
-            <pop-up-box v-if=""></pop-up-box>
+            <transition>
+                <pop-up-box v-if="popup" @toggle-popup="popup = !popup" :popup="popup"></pop-up-box>
+            </transition>
         </div>
         <script src="https://api.map.baidu.com/api?v=2.0&ak=nLcg543nSxxibj5V0dwU02Dl&s=1"></script>
         <script src="bundle.js"></script>

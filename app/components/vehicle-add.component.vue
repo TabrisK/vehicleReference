@@ -10,8 +10,8 @@
     </div>
 </template>
 
-<script>
-    "use strict"
+<script type="text/ecmascript-6">
+    "use strict";
     export default {
         data (){
             return {
