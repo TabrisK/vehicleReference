@@ -12,10 +12,10 @@ const Setting = ()=> System.import('./components/setting.component.vue');
 const routes = [
     //{ path: '*', component: NotFoundComponent },//没有匹配到页面  前端404
     {path: "", redirect: "/vehicle"},
-    {name: "all", path: "/vehicle", meta: {str: "列表", xIndex: 0}, component: Default},
-    {name: "add", path: "/add-vehicle", meta: {str: "新增"}, component: Add},
-    {name: "detail", path: "/vehicle/:id", meta: {str: "详情"}, component: Detail},
-    {name: "setting", path: "/setting", meta: {str: "设置", xIndex: 1}, component: Setting}
+    {name: "all", path: "/vehicle", meta: {str: "列表", xIndex: 0, topLayout: true}, component: Default},
+    {name: "add", path: "/vehicle/add", meta: {str: "新增"}, component: Add},
+    {name: "detail", path: "/vehicle/:id", meta: {str: "详情", view: {footerNav: false}}, component: Detail},
+    {name: "setting", path: "/setting", meta: {str: "设置", xIndex: 1, topLayout: true}, component: Setting}
 ];
 
 const vRouter = new VueRouter({

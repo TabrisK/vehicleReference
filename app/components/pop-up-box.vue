@@ -22,7 +22,7 @@
                 functionalBlock: [
                     {
                         str: "Add",
-                        path: "/add-vehicle"
+                        path: "/vehicle/add"
                     },
                     {
                         str: "Copy",

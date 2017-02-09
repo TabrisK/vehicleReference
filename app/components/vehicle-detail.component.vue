@@ -1,6 +1,18 @@
 <template>
-    <div>vehicle ID: {{$route.params.id}}
-        <baidu-map :init="mapInit"></baidu-map>
+    <div class="vehicle-detail">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>ID：{{$route.params.id}}</td>
+                <td>位置：</td>
+            </tr>
+            <tr>
+                <td>状态：</td>
+                <td>更新时间：</td>
+            </tr>
+            </tbody>
+        </table>
+        <baidu-map :init="mapInit" class="vehicle-detail-map"></baidu-map>
     </div>
 </template>
 <script type="text/ecmascript-6">

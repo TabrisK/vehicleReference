@@ -43,19 +43,21 @@ var app = new Vue({
     el: "#app",
     watch: {
         '$route' (to, from) {
-            const toDepth = to.path.split('/').length;
-            const fromDepth = from.path.split('/').length;
-            if (toDepth == fromDepth) {//同级别看左右关系。从左到右xIndex递增。
-                if (to.meta.xIndex == undefined || from.meta.xIndex == undefined)
+
+            if(to.path.match(from.path)){//前往子页
+                this.stateTransition = 'slide-left';
+            } else if(from.path.match(to.path)){//返回父级页
+                this.stateTransition = 'slide-right';
+            } else{//两页没有任何关系
+                if (to.meta.xIndex == undefined || from.meta.xIndex == undefined)//如果没定义了左右滑动关系
                     this.stateTransition = "";
-                else
+                else//定义了左右滑动关系
                     this.stateTransition = to.meta.xIndex < from.meta.xIndex ? 'slide-right-concat' : 'slide-left-concat';
-            } else//不同级别看谁更靠近根
-                this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+            }
         }
     },
     data: {
-        stateTransition: 'slide-left',
+        stateTransition: '',
         popup: false//popup-box默认关闭
     },
     methods: {},

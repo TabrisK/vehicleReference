@@ -14,7 +14,9 @@
                 <router-view class="content"></router-view>
             </transition>
             <footer>
-                <footer-nav></footer-nav>
+                <transition name="slide-down">
+                    <footer-nav v-show="!$route.meta.view || $route.meta.view.footerNav != false"></footer-nav>
+                </transition>
             </footer>
             <transition name="fade">
                 <pop-up-box v-if="popup" @toggle-popup="popup = !popup" :popup="popup"></pop-up-box>
