@@ -27,7 +27,16 @@ vRouter.beforeEach((to, from, next) => {
 });
 
 vRouter.afterEach((to, from) => {
-    console.log(to);
+    (function (to) {
+        window.setTimeout(()=> {
+            var z = 0;
+            to.path.split("").map((val, key)=> {
+                if (val == "/")z++
+            });
+            let newContent = _.last(document.getElementsByClassName("content"));
+            newContent.style.zIndex = z;//根据path中/的数量决定z-index;
+        }, 10);
+    })(to);
 });
 
 var app = new Vue({
@@ -36,15 +45,20 @@ var app = new Vue({
         '$route' (to, from) {
             const toDepth = to.path.split('/').length;
             const fromDepth = from.path.split('/').length;
-            this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+            if (toDepth == fromDepth) {//同级别看左右关系。从左到右xIndex递增。
+                if (to.meta.xIndex == undefined || from.meta.xIndex == undefined)
+                    this.stateTransition = "";
+                else
+                    this.stateTransition = to.meta.xIndex < from.meta.xIndex ? 'slide-right-concat' : 'slide-left-concat';
+            } else//不同级别看谁更靠近根
+                this.stateTransition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
     },
     data: {
         stateTransition: 'slide-left',
         popup: false//popup-box默认关闭
     },
-    methods: {
-    },
+    methods: {},
     computed: {},
     router: vRouter,
     components: {

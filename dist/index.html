@@ -16,7 +16,7 @@
             <footer>
                 <footer-nav></footer-nav>
             </footer>
-            <transition>
+            <transition name="fade">
                 <pop-up-box v-if="popup" @toggle-popup="popup = !popup" :popup="popup"></pop-up-box>
             </transition>
         </div>

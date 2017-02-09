@@ -1,5 +1,5 @@
 <template>
-    <div class="pop-up-box" @click="togglePopup()" :class="{'pop-up-open': popup}">
+    <div class="pop-up-box" @click="togglePopup()">
         <div class="pop-up-anchor">
             <div class="func-item" v-for="(func, index) in functionalBlock" :style="funcItemPosition(index)">
                 <div v-if="func.path">
