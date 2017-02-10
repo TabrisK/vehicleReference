@@ -30,3 +30,19 @@
         }
     }
 </script>
+<style lang="scss" rel="stylesheet/scss">
+    .vehicle-detail {
+        bottom: 0px;
+        table {
+            width: 100%;
+            td {
+                width: 50%;
+            }
+        }
+        .vehicle-detail-map {
+            top: 50px;
+            bottom: 0px;
+            height: auto;
+        }
+    }
+</style>

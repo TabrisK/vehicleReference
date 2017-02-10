@@ -3,8 +3,10 @@
  */
 "use strict";
 
+require('file-loader!./index.html');
+
 require('vue-resource');
-import '!style-loader!css-loader!sass-loader!./assets/sass/style.scss';
+import '!style-loader!css-loader!sass-loader!./assets/scss/style.scss';
 import Vue from 'vue';
 import _ from 'lodash';
 import VueRouter from 'vue-router';
@@ -43,12 +45,13 @@ var app = new Vue({
     el: "#app",
     watch: {
         '$route' (to, from) {
-
-            if(to.path.match(from.path)){//前往子页
+            if (from.path == "/") {
+                this.stateTransition = "";
+            } else if (to.path.match(from.path)) {//前往子页
                 this.stateTransition = 'slide-left';
-            } else if(from.path.match(to.path)){//返回父级页
+            } else if (from.path.match(to.path)) {//返回父级页
                 this.stateTransition = 'slide-right';
-            } else{//两页没有任何关系
+            } else {//两页没有任何关系
                 if (to.meta.xIndex == undefined || from.meta.xIndex == undefined)//如果没定义了左右滑动关系
                     this.stateTransition = "";
                 else//定义了左右滑动关系

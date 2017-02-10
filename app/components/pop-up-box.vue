@@ -57,3 +57,28 @@
         }
     }
 </script>
+<style lang="scss" rel="stylesheet/scss">
+    @import "~scss/variables.scss";
+    .pop-up-box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        top: 0px;
+        left: 0px;
+        z-index: $layout-S;
+
+        .pop-up-anchor {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            .func-item {
+                position: absolute;
+                background-color: white;
+                border-radius: 100%;
+                text-align: center;
+                line-height: 50px;
+            }
+        }
+    }
+</style>
