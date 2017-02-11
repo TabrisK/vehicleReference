@@ -22,13 +22,7 @@
         },
         methods: {
             addVehicle(v){
-                this.$http.post("/api/vehicles", v).then(res=> {
-                    if (res.status == 200)
-                        this.$router.push({path: "/all-vehicles"});
-
-                }, (err)=> {
-                    console.log(err);
-                });
+                this.$router.push({path: "/all-vehicles"});
             }
         }
     }

@@ -24,13 +24,65 @@
         },
         methods: {
             getVehicles () {
+                var vm = this;
                 this.error = this.vehicleList = null;
                 this.loading = true;
-                this.$http.get("/api/vehicles").then(res=> {
-                    this.vehicleList = res.body;
-                }, (err)=> {
-                    console.log(err)
-                });
+
+                window.setTimeout(function(){
+                    vm.vehicleList = [
+                        {
+                            "id": 1,
+                            "plate": "沪A7xxxx",
+                            "brand": "VOLVO",
+                            "contact": "HELEX",
+                            "phone": "13262607231",
+                            "img": "assets/img/S90.jpg"
+                        },
+                        {
+                            "id": 2,
+                            "plate": "沪A3xxxx",
+                            "brand": "BMW",
+                            "contact": "Nick",
+                            "phone": "1xxxxxxxxxx"
+                        },
+                        {
+                            "id": 5,
+                            "plate": "沪C7Nxxxx",
+                            "brand": "Cadillac",
+                            "contact": "Obama",
+                            "phone": "1xxxxxxxxxx"
+                        },
+                        {
+                            "id": 4,
+                            "plate": "沪ANxxxx",
+                            "brand": "Lexus",
+                            "contact": "Rosemond",
+                            "phone": "1xxxxxxxxxx"
+                        },
+                        {
+                            "id": 0,
+                            "plate": "沪A2xxxx",
+                            "brand": "Benz",
+                            "contact": "Sherry",
+                            "phone": "1xxxxxxxxxx"
+                        },
+                        {
+                            "id": 6,
+                            "plate": "浙Nxxxx",
+                            "brand": "Chevrolet",
+                            "contact": "Trump",
+                            "phone": "1xxxxxxxxxx"
+                        },
+                        {
+                            "id": 3,
+                            "plate": "沪B1xxxx",
+                            "brand": "Audi",
+                            "contact": "Yijun",
+                            "phone": "1xxxxxxxxxx"
+                        }
+                    ];
+                },500);
+
             }
         }
     }

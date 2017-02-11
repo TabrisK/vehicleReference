@@ -22,7 +22,7 @@ function api(app) {
     })
 }
 
-let vehicleInfo = [
+var vehicleInfo = [
     {
         "id": 1,
         "plate": "沪A7xxxx",
