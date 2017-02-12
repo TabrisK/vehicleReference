@@ -28,8 +28,7 @@ let vehicleInfo = [
         "plate": "沪A7xxxx",
         "brand": "VOLVO",
         "contact": "HELEX",
-        "phone": "13262607231",
-        "img": "assets/img/S90.jpg"
+        "phone": "13262607231"
     },
     {
         "id": 2,

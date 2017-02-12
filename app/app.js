@@ -7,6 +7,7 @@ require('file-loader!./index.html');
 
 require('vue-resource');
 import '!style-loader!css-loader!sass-loader!./assets/scss/style.scss';
+import Plugins from './directives/plugins';
 import Vue from 'vue';
 import _ from 'lodash';
 import VueRouter from 'vue-router';
@@ -18,6 +19,7 @@ import popUpBox from './components/pop-up-box.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(Plugins);
 
 Vue.component(
     'baidu-map',

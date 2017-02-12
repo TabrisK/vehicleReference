@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="addVehicle(vehicle)">
+        <form @submit.prevent="addVehicle(vehicle)" v-form="addVForm">
             <div><input v-model="vehicle.plate" placeholder="车牌" maxlength="7"></div>
             <div><input v-model="vehicle.brand" placeholder="品牌"></div>
             <div><input v-model="vehicle.contact" placeholder="联系人"></div>
@@ -15,7 +15,8 @@
     export default {
         data (){
             return {
-                vehicle: {}
+                vehicle: {},
+                addVForm: {}
             }
         },
         created () {
@@ -33,3 +34,20 @@
         }
     }
 </script>
+<style lang="scss" rel="stylesheet/scss">
+    form {
+        div {
+            width: 100%;
+            input {
+                border-left: 0px;
+                border-right: 0px;
+                width: 100%;
+                line-height: 26px;
+                font-size: 18px;
+                padding: 0px 10px;
+                margin: 10px 0px;
+                display: table-cell;
+            }
+        }
+    }
+</style>

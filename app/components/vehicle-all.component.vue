@@ -2,7 +2,10 @@
     <div>
         <ul class="primary-list">
             <li v-for="vehicle in vehicleList">
-                <router-link :to="{ name: 'detail', params: { id: vehicle.id }}"><b>{{vehicle.plate}}</b><span class="contact">{{vehicle.contact}}</span></router-link>
+                <router-link :to="{ name: 'detail', params: { id: vehicle.id }}">
+                    <b>{{vehicle.plate}}</b>
+                    <span class="contact">{{vehicle.contact}}</span>
+                </router-link>
             </li>
         </ul>
     </div>
