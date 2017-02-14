@@ -1,6 +1,6 @@
 <template>
-    <div class="pop-up-box" @click="togglePopup()">
-        <div class="pop-up-anchor">
+    <div class="cover" @click="togglePopup()">
+        <div class="gravity-bottom-right">
             <div class="func-item" v-for="(func, index) in functionalBlock" :style="funcItemPosition(index)">
                 <div v-if="func.path">
                     <router-link :to="func.path">{{func.str}}</router-link>
@@ -58,27 +58,11 @@
     }
 </script>
 <style lang="scss" rel="stylesheet/scss">
-    @import "~scss/variables.scss";
-    .pop-up-box {
+    .func-item {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-        top: 0px;
-        left: 0px;
-        z-index: $layout-S;
-
-        .pop-up-anchor {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            .func-item {
-                position: absolute;
-                background-color: white;
-                border-radius: 100%;
-                text-align: center;
-                line-height: 50px;
-            }
-        }
+        background-color: white;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 50px;
     }
 </style>

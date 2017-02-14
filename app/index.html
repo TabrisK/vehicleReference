@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>vehicle ref</title>
 </head>
 <body>
@@ -20,6 +20,9 @@
     </footer>
     <transition name="fade">
         <pop-up-box v-if="popup" @toggle-popup="popup = !popup" :popup="popup"></pop-up-box>
+    </transition>
+    <transition name="slide-down">
+            <slide-bottom-box></slide-bottom-box>
     </transition>
 </div>
 <script src="https://api.map.baidu.com/api?v=2.0&ak=nLcg543nSxxibj5V0dwU02Dl&s=1"></script>

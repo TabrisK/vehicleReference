@@ -71,7 +71,7 @@ export default {
                     formObj.$dirty = !!e;
                     setErrorMsg(formObj, msg, !!e);
 
-                    console.log(formObj);
+                    //更新form对象状态
                     vm.$data[binding.expression] = Object.assign({}, vm.$data[binding.expression], formObj);
 
                     function setErrorMsg(err, msg, userOperation) {

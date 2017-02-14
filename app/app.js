@@ -16,6 +16,7 @@ import vRouter from './router';
 import topNav from './components/footer-nav.component.vue';
 import headerBar from './components/header-bar.component.vue';
 import popUpBox from './components/pop-up-box.vue';
+import slideBottomBox from './components/slide-bottom-box.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -63,7 +64,9 @@ var app = new Vue({
     },
     data: {
         stateTransition: '',
-        popup: false//popup-box默认关闭
+        popup: false,//pop-up-box默认关闭
+        slideUp: false,//slide-up-box默认关闭
+        slideUpTemp: {}
     },
     methods: {},
     computed: {},
@@ -71,6 +74,16 @@ var app = new Vue({
     components: {
         "footer-nav": topNav,
         "header-bar": headerBar,
-        "pop-up-box": popUpBox
+        "pop-up-box": popUpBox,
+        "slide-bottom-box": slideBottomBox
+    },
+    created: function () {
+        this.$on('slide-up', function (temp) {
+            console.log(temp);
+            this.slideUp = true;//收到事件，弹出slide-up-box
+            this.slideUpTemp = temp;//收到事件，弹出slide-up-box
+        });
+    },
+    beforeMount: function () {
     }
 });
