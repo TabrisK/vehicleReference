@@ -21,8 +21,14 @@
     <transition name="fade">
         <pop-up-box v-if="popup" @toggle-popup="popup = !popup" :popup="popup"></pop-up-box>
     </transition>
-    <transition name="slide-down">
-            <slide-bottom-box></slide-bottom-box>
+
+    <transition name="fade">
+        <div class="cover slide-bottom-box" v-show="cover">
+            <!--slide-bottom-box-->
+            <transition name="slide-down">
+                <slide-bottom-box v-if="$store.state.slideBottomBox.show"></slide-bottom-box>
+            </transition>
+        </div>
     </transition>
 </div>
 <script src="https://api.map.baidu.com/api?v=2.0&ak=nLcg543nSxxibj5V0dwU02Dl&s=1"></script>

@@ -2,7 +2,7 @@
     <div class="vehicle-add">
         <form @submit.prevent="addVehicle(vehicle)" v-form="addVForm">
             <div style="font-size: 0px;">
-                <span class="plate" @click="togglePlatesSelector()">{{vehicle.plate.province}}<i
+                <span class="plate" @click="toggleProvincesSelector()">{{vehicle.plate.province}}<i
                         class="fa fa-chevron-down"></i></span>
                 <input name="plate" v-model="vehicle.plate.tailNumber" placeholder="车牌"
                        pattern="^[\u4e00-\u9fa5]{1}[A-Z0-9]*$" maxlength="7" required
@@ -27,18 +27,13 @@
             <button :disabled="addVForm.$invalid" type="submit"
                     :class="{'disabled': addVForm.$invalid}">提交
             </button>
-
-            <!--<transition name="slide-down">
-                <div class="bottom-anchor" v-show="showPlateSelector">
-                    <span v-for="p in provinces" @click="select(p)">{{p}}</span>
-                </div>
-            </transition>-->
         </form>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
     "use strict";
+    import {mapState, mapMutations} from 'vuex';
     export default {
         data (){
             return {
@@ -48,15 +43,12 @@
                         tailNumber: ""
                     }
                 },
-                addVForm: {},
-                provinces: ["京", "津", "沪", "渝", "蒙", "新", "藏", "宁", "桂", "港", "澳", "黑",
-                    "吉", "辽", "晋", "冀", "青", "鲁", "豫", "苏", "皖", "浙", "闽", "赣",
-                    "湘", "鄂", "粤", "琼", "甘", "陕", "黔", "滇", "川"]
+                addVForm: {}
             }
         },
         created () {
         },
-        methods: {
+        methods: Object.assign({
             addVehicle(v){
                 this.$http.post("/api/vehicles", v).then(res=> {
                     if (res.status == 200)
@@ -70,19 +62,28 @@
                 this.vehicle.plate.province = p;
                 this.togglePlatesSelector();
             },
-            togglePlatesSelector: function () {
-                //this.showPlateSelector = !this.showPlateSelector;
-                /*this.$emit('slide-up', {
-                    temp: '<div><span v-for="p in provinces" @click="select(p)">{{p}}</span></div>'
-                })*/
+            toggleProvincesSelector: function(){
+                this.$store.dispatch("toggleSlideBottomBox", {
+                    type: "normal",
+                    data:{
+                        collection: ["京", "津", "沪", "渝", "蒙", "新", "藏", "宁", "桂", "港", "澳", "黑",
+                            "吉", "辽", "晋", "冀", "青", "鲁", "豫", "苏", "皖", "浙", "闽", "赣",
+                            "湘", "鄂", "粤", "琼", "甘", "陕", "黔", "滇", "川"]
+                    }
+                }).then(function(item){
+                    console.log(item);
+                },function(err){
+                    console.log(err);
+                });
             }
-        },
+        }),
         computed: {}
     }
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
     @import "~scss/variables.scss";
+
     .vehicle-add {
         bottom: 0px;
     }
