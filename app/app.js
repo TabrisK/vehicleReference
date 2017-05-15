@@ -20,16 +20,30 @@ import vRouter from './router';
 import topNav from './components/footer-nav.component.vue';
 import headerBar from './components/header-bar.component.vue';
 import popUpBox from './components/pop-up-box.vue';
-import slideBottomBox from './components/slide-bottom-box.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(Plugins);
-Vue.use(Vuex);
 
 Vue.component(
     'baidu-map',
     () => System.import('./components/baidu-map.component.vue')
+);
+Vue.component(
+    'collection',
+    () => System.import('./components/collection.component.vue')
+);
+Vue.component(
+    'primaryList',
+    () => System.import('./components/primary-list.component.vue')
+);
+Vue.component(
+    'loading',
+    () => System.import('./components/loading.component.vue')
+);
+Vue.component(
+    'h-select',
+    () => System.import('./components/h-select.component.vue')
 );
 
 vRouter.beforeEach((to, from, next) => {
@@ -47,44 +61,6 @@ vRouter.afterEach((to, from) => {
             newContent.style.zIndex = z;//根据path中/的数量决定z-index;
         }, 10);
     })(to);
-});
-
-const store = new Vuex.Store({
-    state: {
-        slideBottomBox: {
-            type: "",
-            data: {},
-            show: false
-        }
-    },
-    mutations: {
-        toggleSlideBottomBox: function (state, scope) {
-            if (!scope) {
-                !state.slideBottomBox.show && console.warn("Scope has never been defined.");
-                state.slideBottomBox.show = false;//没有scope默认关闭
-            }
-            state.slideBottomBox.show = !state.slideBottomBox.show;
-            if (state.slideBottomBox.show) {//展示则赋值
-                state.slideBottomBox.type = scope.type;
-                state.slideBottomBox.data = scope.data;
-            }
-        }
-    },
-    actions: {
-        toggleSlideBottomBox({commit, state}, scope){
-            commit("toggleSlideBottomBox", scope);
-            return new Promise(function (resolve, reject) {
-                app.$on("exit", function (item) {
-                    console.log(item);
-                    commit("toggleSlideBottomBox");
-                    if (item)
-                        resolve(item);
-                    else
-                        reject();
-                });
-            });
-        }
-    }
 });
 
 var app = new Vue({
@@ -109,21 +85,17 @@ var app = new Vue({
         stateTransition: '',
         popup: false,//pop-up-box默认关闭
         slideUp: false,//slide-up-box默认关闭
-        slideUpTemp: {}
+        slideUpTemp: {},
+        mask: false//loading
     },
     methods: {},
     computed: {
-        cover: function () {
-            return store.state.slideBottomBox.show;
-        }
     },
     router: vRouter,
-    store,
     components: {
         "footer-nav": topNav,
         "header-bar": headerBar,
-        "pop-up-box": popUpBox,
-        "slide-bottom-box": slideBottomBox
+        "pop-up-box": popUpBox
     },
     created: function () {
     },
