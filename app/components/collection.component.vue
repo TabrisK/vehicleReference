@@ -4,7 +4,7 @@
             <transition name="slide-down">
                 <div class="gravity-bottom-left panel">
                     <div class="normal">
-                    <span @click.stop="select(item)" class="item" :style="{width: itemWidth}"
+                    <span @click.stop="select(item)" :class="[value == item?'active':'', 'item']" :style="{width: itemWidth}"
                           v-for="item in collection">{{item}}</span>
                     </div>
                 </div>
@@ -15,6 +15,7 @@
 <script type="text/ecmascript-6">
     "use strict";
     import bus from "../bus";
+    let showDebounce;
 
     export default {
         props: {
@@ -47,6 +48,11 @@
         },
         methods: {
             select (item) {
+                if (showDebounce && Date.now() - showDebounce <= 500) {
+                    return;
+                }
+
+                showDebounce = Date.now();
                 this.show = !this.show;
                 item && this.$emit('input', item);
             }
@@ -69,6 +75,10 @@
                     border-radius: 5px;
                     display: inline-block;
                     text-align: center;
+                    
+                    &.active {
+                        background-color: darkgray;
+                    }
                 }
             }
         }

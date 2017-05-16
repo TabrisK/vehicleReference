@@ -25,9 +25,11 @@
                 <option value="2">外部设备</option>
             </select>-->
             <div class="select" @click="bus.$emit('select', 'types')">{{types[vehicle.type].display}}</div>
-            <button :disabled="addVForm.$invalid" type="submit"
-                    :class="{'disabled': addVForm.$invalid}">提交
-            </button>
+            <div class="btn-group">
+                <button class="btn-success" :disabled="addVForm.$invalid" type="submit"
+                        :class="{'disabled': addVForm.$invalid}">提交
+                </button>
+            </div>
         </form>
         <collection :collection="provinces" v-model="vehicle.plate.province" event-key="province"/>
         <h-select :options="types" v-model="vehicle.type" event-key="types"></h-select>

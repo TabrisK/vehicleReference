@@ -53,7 +53,9 @@
             let bgElement = this.$el.getElementsByClassName("option-bg")[0];
             let optionsElements = bgElement.getElementsByClassName("option");
             let upperBoundary = specifiedTop - this.options.length * 30;//上限
-            let lowerBoundary = specifiedTop + 30;//下限
+            let lowerBoundary = specifiedTop;//下限
+            let upperEx = specifiedTop - this.options.length * 30 - 30 * 3;
+            let lowerEx = specifiedTop + 30 * 3;
             let vm = this;
 
             bus.$on("select", function (param) {
@@ -97,8 +99,8 @@
                 }
                 //设置高度
                 bgElement.style.top = cTop + "px";
-                //e.stopPropagation();
-                //e.preventDefault();
+                e.stopPropagation();
+                e.preventDefault();
             }
 
             function handleEnd(e) {
@@ -171,11 +173,9 @@
     }
 
     function getOffset(excess) {
-        if (Math.abs(excess) > offsetExtreme)//超出最大界限，直接设置成上限值
-            return offsetExtreme * (excess / Math.abs(excess));
-        let rate = excess / offsetExtreme;
-        let finalOffset = offsetExtreme * Math.sin(rate * (Math.PI / 2));
-        return Number(finalOffset.toFixed(2));
+        let sign = excess / Math.abs(excess);
+        let finalOffset = (-Math.pow(1.01, -Math.abs(excess)) + 1) * 30 * 3;
+        return Number(sign * finalOffset.toFixed(3));
     }
 </script>
 <style lang="scss" rel="stylesheet/scss">
@@ -227,7 +227,7 @@
             }
             .operation {
                 height: 26px;
-                width:100%;
+                width: 100%;
                 span {
                     height: 20px;
                     padding: 3px;

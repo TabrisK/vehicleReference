@@ -3,6 +3,7 @@
  */
 
 var path = require("path");
+var webpack = require('webpack');
 var copyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -20,7 +21,17 @@ module.exports = {
                 from: "app/assets/img",
                 to: "assets/img"
             }
-        ])
+        ]),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ],
     resolve: {
         alias: {
