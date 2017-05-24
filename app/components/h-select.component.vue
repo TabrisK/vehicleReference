@@ -52,10 +52,8 @@
             let startBgY;//记录BgY的top
             let bgElement = this.$el.getElementsByClassName("option-bg")[0];
             let optionsElements = bgElement.getElementsByClassName("option");
-            let upperBoundary = specifiedTop - this.options.length * 30;//上限
-            let lowerBoundary = specifiedTop;//下限
-            let upperEx = specifiedTop - this.options.length * 30 - 30 * 3;
-            let lowerEx = specifiedTop + 30 * 3;
+            let upperBoundary = specifiedTop - this.options.length * 30;//线性上限
+            let lowerBoundary = specifiedTop;//线性下限
             let vm = this;
 
             bus.$on("select", function (param) {
@@ -74,8 +72,6 @@
             });
 
             this.$el.addEventListener("touchstart", handleStart, false);
-            this.$el.addEventListener("touchend", handleEnd, false);
-            this.$el.addEventListener("touchmove", handleMove, false);
 
             function handleStart(e) {
                 startClientY = e.touches[0].clientY;
@@ -175,7 +171,7 @@
     function getOffset(excess) {
         let sign = excess / Math.abs(excess);
         let finalOffset = (-Math.pow(1.01, -Math.abs(excess)) + 1) * 30 * 3;
-        return Number(sign * finalOffset.toFixed(3));
+        return sign * Number(finalOffset.toFixed(3));
     }
 </script>
 <style lang="scss" rel="stylesheet/scss">

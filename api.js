@@ -15,7 +15,7 @@ function api(app) {
         let list = _.compact(vehicleInfo.slice((page - 1) * size, page * size));
         setTimeout(function(){
             res.send(list);
-        },1500);
+        },0);
     });
 
     app.get("/api/vehicle/:id", function (req, res) {
